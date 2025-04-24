@@ -31,17 +31,18 @@ export function Home(){
 
   const [input, setInput] = useState("")
   const [coins, setcoins] = useState<CoinProps[]>([])
+  const [offset, setOffset] = useState(0)
 
   const navigate = useNavigate()
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [offset])
 
-  //Requiziçao da API
+  //REQUISIÇAO DA API
   async function getData(){
     try{
-      const response = await axios<DataProp>("https://rest.coincap.io/v3/assets?limit=10&offset=0&apiKey=a3ee552b1ffab98352f813e9d2525021ec4df9266072a552600a585320a550a5")
+      const response = await axios<DataProp>(`https://rest.coincap.io/v3/assets?limit=10&offset=${offset}&apiKey=a3ee552b1ffab98352f813e9d2525021ec4df9266072a552600a585320a550a5`)
     
       const coinsData = response.data.data
 
@@ -67,8 +68,10 @@ export function Home(){
         }
         return formated
       })
-      setcoins(formatedResult)
-      
+
+      const listCoins = [...coins, ...formatedResult]
+      setcoins(listCoins)
+
     } catch(erro){
         console.log("Erro ao buscar dados de moedas:", erro)
     }
@@ -88,7 +91,12 @@ export function Home(){
 
   //FUNCAO PARA CARREGAR MAIS MOEDAS
   function handleGetMore(){
+    if(offset === 0) {
+      setOffset(10)
+      return
+    }
 
+    setOffset(offset + 10)
   }
 
     return(
