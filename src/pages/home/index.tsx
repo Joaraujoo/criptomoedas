@@ -75,7 +75,6 @@ export function Home(){
     } catch(erro){
         console.log("Erro ao buscar dados de moedas:", erro)
     }
-   
   }
 
   //FUNÇAO PARA PESQUISAR A MOEDA
