@@ -1,10 +1,6 @@
 # 💰 Criptomoedas
 Aplicação web desenvolvida com React que consome a API pública da CoinCap para exibir informações atualizadas sobre criptomoedas.​
 
-# 🚀 Demonstração
-Acesse a aplicação em produção:
-🔗 https://joaraujoo.github.io/
-
 # 🧠 Funcionalidades
 - Listagem das principais criptomoedas com dados como nome, símbolo e preço.
 - Página de detalhes para cada criptomoeda, exibindo informações adicionais.
